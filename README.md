@@ -10,7 +10,7 @@ Athos is the virtual flight assistant bot I have created with Dialogflow. I'm us
 
 ## Example for conversational flow: user input -> and Athos output
 - Hé -> Hallo! Wat is je naam?
-- [Naam] -> Fijn om kennis met je te maken. Mijn naam is Aphros. Ben je benieuwd wat ik voor jou kan doen?
+- [Naam] -> Fijn om kennis met je te maken. Mijn naam is Athos. Ben je benieuwd wat ik voor jou kan doen?
 - Ja -> Ik kan op dit moment het weer in de meeste plaatsen voorspellen, voor de komende 5 dagen. Voor welke stad en datum kan ik jou het weer voorspellen?
 
 ## Special requirements
