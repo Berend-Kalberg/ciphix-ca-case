@@ -8,9 +8,16 @@ Athos is the virtual flight assistant bot I have created with Dialogflow.
 - Find the weather forecast for the next 5 days
 - Smalltalk
 
-## Example for user input -> (and Athos output)
+## Example for conversational flow: user input -> and Athos output
 
-- Hé -> (Hallo! Wat is je naam?)
-- [Naam] -> (Fijn om kennis met je te maken. Mijn naam is Aphros. Ben je benieuwd wat ik voor jou kan doen?)
-- Ja -> (Ik kan op dit moment het weer in de meeste plaatsen voorspellen, voor de komende 5 dagen. Voor welke stad en datum kan ik jou het weer voorspellen?)
+- Hé -> Hallo! Wat is je naam?
+- [Naam] -> Fijn om kennis met je te maken. Mijn naam is Aphros. Ben je benieuwd wat ik voor jou kan doen?
+- Ja -> Ik kan op dit moment het weer in de meeste plaatsen voorspellen, voor de komende 5 dagen. Voor welke stad en datum kan ik jou het weer voorspellen?
 
+```
+var city = oldCity.replace(/[áàâä]/g, 'a')
+            .replace(/[úùûüū]/g, 'u')
+            .replace(/[íïìîįī]/g, 'i')
+            .replace(/[óöôòõœøō]/g, 'o')
+            .replace(/[éëêèęėē]/g, 'e')
+```
