@@ -1,7 +1,17 @@
 # Athos Documentation
-Athos is the virtual flight assistant bot I have created with Dialogflow. I'm using OpenWeatherMap API and specifically the 5 day forecast with has 3 hour intervals.
+Athos is the virtual flight assistant bot I have created with Dialogflow. 
 
+## API
+I'm using OpenWeatherMap API and specifically the 5 day forecast with has 3 hour intervals.
 [API Link](https://openweathermap.org/forecast5)
+
+**Upsides**
+- 5 day forecast
+- Free
+- Easily upgrade to better API
+
+**Downsides**
+- 3 hour intervals
 
 ## Added Features
 - Find the weather in nearly any major city
@@ -12,13 +22,13 @@ Athos is the virtual flight assistant bot I have created with Dialogflow. I'm us
 - Hé -> Hallo! Wat is je naam?
 - [Naam] -> Fijn om kennis met je te maken. Mijn naam is Athos. Ben je benieuwd wat ik voor jou kan doen?
 - Ja -> Ik kan op dit moment het weer in de meeste plaatsen voorspellen, voor de komende 5 dagen. Voor welke stad en datum kan ik jou het weer voorspellen?
-- Wat is het weer in Denver op 28 september? -> onbewolkt verwacht met een temperatuur van 26.55 graden op Mon Sep 28 2020 23:00:00 GMT+0200 (Central European Summer Time)
-
+- Wat is het weer in Denver op 28 september om 9 uur in de ochtend? -> onbewolkt verwacht met een temperatuur van 26.55 graden op 28-09-2020 09:00:00
+- 
 ## Special requirements
-- npm request
+- node-fetch
 
 ## Code documentation
-Add special characters to this code in index.js to remove them from city names before they are send to the API. OpenWeatherMap api does not handle special characters very well that is why this code is very important.
+Add special characters to this code in index.js to remove them from city names before they are send to the API. OpenWeatherMap api does not handle special characters very well that is why this code is very important. Without it the application would crash in scenarios where it would send the wrong characters to the API.
 ```
 var city = oldCity.replace(/[áàâä]/g, 'a')
             .replace(/[úùûüū]/g, 'u')
@@ -40,3 +50,9 @@ Timestamps in OpenWeatherMap are in milliseconds so dates have to be converted t
                 }
             }
 ```
+In Dialogflow the bot asks for time, date and geo-city. I have separated time and date because date-time would not function like expected. It would often return the wrong time to the application which resulted in many crashes.
+```
+ var dateString = agent.parameters['date']
+var timeString = agent.parameters['time']
+```
+
