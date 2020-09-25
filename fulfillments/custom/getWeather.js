@@ -14,10 +14,7 @@ module.exports = {
         // Retrieves date from Dialogflow
         var dateString = agent.parameters['date']
         var timeString = agent.parameters['time']
-
-        // Log city to console for debugging
-        console.log(oldCity)
-
+        
         // Added this function so api calls with special characters get filtered
         var city = oldCity.replace(/[áàâä]/g, 'a')
             .replace(/[úùûüū]/g, 'u')
@@ -25,47 +22,21 @@ module.exports = {
             .replace(/[óöôòõœøō]/g, 'o')
             .replace(/[éëêèęėē]/g, 'e')
 
-       
-
-        // Log date to console for debugging
-        console.log("dialogflow: " + dateString)
-
         // dateString to Date object places in variable date
         var date = new Date(dateString)
 
         var time = new Date(timeString)
 
-        // Log date to console for debugging
-        console.log("converted: " + date)
-
-        // Retrieves month from date
         var month = date.getMonth()
-
-        // Log month to console for debugging
-        console.log("month: " + month)
-
-        // Retrieves day from date
         var day = date.getDate()
-
-        // Log day to console for debugging
-        console.log("day: " + day)
-
         var hour = time.getHours()
-
-        console.log("hour: " + hour)
-
         var time = date.getTime()
-
-        console.log(time / 1000)
 
         // Constant variable with my api key
         const apiKey = '459cf5b03efcfd9a0f668270e083ee99'
 
         // Constant variable with the url required for the request
         const url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&lang=nl&units=metric`
-
-        // Log url for debugging
-        console.log(url)
 
         // Request made to url (api)
         // The api contains the weather for the next 5 days with intervals every 3 hours
@@ -94,9 +65,6 @@ module.exports = {
                 console.log(obj.list[i].dt)
             }
 
-            // Log list length for debugging
-            console.log('total list length: ' + obj.list.length)
-
             // User sees this message if no weather has been found for their date
             var description = "Geen geschikte data gevonden voor deze datum"
 
@@ -110,11 +78,6 @@ module.exports = {
                 let dateText = obj.list[i].dt_txt
 
                 var correctedHours = date.getHours() - 2 
-
-                // Log month and day with their list number to console for debugging
-                console.log(i + ":" + ' month is: ' + date.getMonth())
-                console.log(i + ":" + ' day is: ' + date.getDate())
-                console.log(i + ":" + ' hour is: ' + date.getHours())
 
                 // If month and day match user input description will update to the expected weather for that day
                 if (date.getMonth() == month && date.getDate() == day && correctedHours == hour) {

@@ -7,7 +7,6 @@ const f_welcome = require('./fulfillments/default/welcome')
 const f_fallback = require('./fulfillments/default/fallback')
 const f_getWeather = require('./fulfillments/custom/getWeather')
 
-
 // Fixes cannot GET/ 
 app.get('/', (req, res) => {
     res.send("Test")
