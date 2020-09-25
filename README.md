@@ -15,7 +15,7 @@ I'm using OpenWeatherMap API and specifically the 5 day forecast with has 3 hour
 
 ## Added Features
 - Find the weather in nearly any major city
-- Find the weather forecast for the next 5 days
+- Find the weather forecast for the next 5 days (3 hour intervals)
 - Smalltalk
 
 ## Example for conversational flow: user input -> and Athos output
@@ -23,7 +23,7 @@ I'm using OpenWeatherMap API and specifically the 5 day forecast with has 3 hour
 - [Naam] -> Fijn om kennis met je te maken. Mijn naam is Athos. Ben je benieuwd wat ik voor jou kan doen?
 - Ja -> Ik kan op dit moment het weer in de meeste plaatsen voorspellen, voor de komende 5 dagen. Voor welke stad en datum kan ik jou het weer voorspellen?
 - Wat is het weer in Denver op 28 september om 9 uur in de ochtend? -> onbewolkt verwacht met een temperatuur van 26.55 graden op 28-09-2020 09:00:00
-- 
+
 ## Special requirements
 - node-fetch
 
@@ -52,7 +52,7 @@ Timestamps in OpenWeatherMap are in milliseconds so dates have to be converted t
 ```
 In Dialogflow the bot asks for time, date and geo-city. I have separated time and date because date-time would not function like expected. It would often return the wrong time to the application which resulted in many crashes.
 ```
- var dateString = agent.parameters['date']
+var dateString = agent.parameters['date']
 var timeString = agent.parameters['time']
 ```
 
